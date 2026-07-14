@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency List: Concept Pitch</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background: #0b0b0f; color: #f2f2f7; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif; }
+    .slide {
+        display: none; height: 100vh; padding: 6vh 8vw; flex-direction: column;
+        justify-content: center; position: relative; overflow: hidden;
+    }
+    .slide.active { display: flex; }
+    .kicker { font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; color: #0a84ff; margin-bottom: 1.2rem; font-weight: 600; }
+    h1 { font-size: 3.6rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.2rem; }
+    h2 { font-size: 2.4rem; font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; }
+    p.lead { font-size: 1.3rem; color: #aeaeb2; max-width: 46rem; line-height: 1.5; }
+    .accent { color: #0a84ff; }
+    .red { color: #ff453a; }
+    .green { color: #30d158; }
+    .orange { color: #ff9f0a; }
+    .grid { display: grid; gap: 1.2rem; margin-top: 2rem; }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .card {
+        background: #1c1c1e; border-radius: 18px; padding: 1.6rem;
+        border: 1px solid #2c2c2e;
+    }
+    .card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+    .card p { font-size: 0.95rem; color: #aeaeb2; line-height: 1.45; }
+    .stat { font-size: 2.6rem; font-weight: 800; }
+    .stat-label { font-size: 0.95rem; color: #aeaeb2; margin-top: 0.3rem; line-height: 1.4; }
+    .src { font-size: 0.72rem; color: #636366; margin-top: 0.8rem; }
+    .flow { display: flex; gap: 0.8rem; align-items: stretch; margin-top: 2rem; }
+    .flow .step {
+        flex: 1; background: #1c1c1e; border: 1px solid #2c2c2e; border-radius: 14px;
+        padding: 1.1rem; font-size: 0.9rem; color: #d1d1d6; line-height: 1.4;
+    }
+    .flow .step b { display: block; color: #f2f2f7; margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .flow .arrow { align-self: center; color: #0a84ff; font-size: 1.4rem; }
+    .phone {
+        width: 200px; background: #1c1c1e; border: 3px solid #3a3a3c; border-radius: 28px;
+        padding: 1.2rem 0.9rem; font-size: 0.72rem; line-height: 1.5; color: #d1d1d6;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.55);
+    }
+    .phone .notch { width: 60px; height: 14px; background: #000; border-radius: 8px; margin: 0 auto 0.9rem; }
+    .phone .title { font-weight: 700; font-size: 0.85rem; color: #f2f2f7; text-align: center; margin-bottom: 0.7rem; }
+    .phone .field { background: #2c2c2e; border-radius: 8px; padding: 0.45rem 0.6rem; margin: 0.4rem 0; color: #f2f2f7; }
+    .phone .btn { background: #0a84ff; color: #fff; border-radius: 9px; padding: 0.5rem; text-align: center; font-weight: 600; margin-top: 0.6rem; }
+    .phone .btn.red { background: #ff453a; }
+    .phone .btn.green { background: #30d158; }
+    .phone .muted { color: #8e8e93; font-size: 0.65rem; }
+    .phones { display: flex; gap: 2.2rem; justify-content: center; margin-top: 2rem; }
+    ul.big { margin-top: 1.6rem; font-size: 1.15rem; line-height: 2.1; color: #d1d1d6; list-style: none; }
+    ul.big li::before { content: "→  "; color: #0a84ff; font-weight: 700; }
+    ul.check li::before { content: "✓  "; color: #30d158; }
+    ul.cross li::before { content: "✕  "; color: #ff453a; }
+    .footer-note { position: absolute; bottom: 3vh; left: 8vw; right: 8vw; font-size: 0.75rem; color: #48484a; }
+    .page { position: absolute; bottom: 3vh; right: 8vw; font-size: 0.8rem; color: #636366; }
+    .tag { display: inline-block; background: rgba(10,132,255,0.15); color: #0a84ff; border-radius: 999px; padding: 0.25rem 0.9rem; font-size: 0.8rem; font-weight: 600; margin-right: 0.5rem; }
+    .shots { display: flex; gap: 2.5rem; align-items: center; }
+    .shots img { height: 62vh; border-radius: 22px; box-shadow: 0 18px 50px rgba(0,0,0,0.6); border: 1px solid #2c2c2e; }
+    .shots .caption { font-size: 0.85rem; color: #8e8e93; text-align: center; margin-top: 0.7rem; max-width: 240px; }
+    .shots.row { justify-content: center; margin-top: 1.6rem; }
+    .shots.row img { height: 54vh; }
+    .shots.row .caption { max-width: 200px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · TITLE -->
+<section class="slide active">
+    <div class="kicker">Concept pitch · iOS safety feature</div>
+    <h1>Emergency List</h1>
+    <h2 style="color:#aeaeb2; font-weight:600;">Your phone is gone.<br>Any iPhone can still reach your people.</h2>
+    <p class="lead" style="margin-top:1rem;">The one number everyone still remembers is their own.<br>That should be enough to get help.</p>
+    <div style="margin-top:2.5rem;"><span class="tag">Working SwiftUI prototype</span><span class="tag">Privacy-first design</span><span class="tag">Built on proven Apple infrastructure</span></div>
+    <div class="page">Vasu Khanna · 2026</div>
+</section>
+
+<!-- 2 · THE MOMENT -->
+<section class="slide">
+    <div class="kicker">The unserved moment</div>
+    <h2>Your phone was just stolen.<br>You're alone, on a street, in a city.</h2>
+    <ul class="big cross">
+        <li>You don't remember anyone's number. Nobody does anymore</li>
+        <li>Your digital cards, tickets, and IDs were on the phone</li>
+        <li>Find My needs another device of <i>yours</i>, and it's at home</li>
+        <li>Medical ID and Emergency SOS live on <i>your</i> phone, the one that's gone</li>
+    </ul>
+    <p class="lead" style="margin-top:2rem;">Every existing tool helps you <b class="accent">find the phone later</b>.<br>Nothing helps you <b class="red">reach a human right now</b>.</p>
+    <div class="page">2</div>
+</section>
+
+<!-- 3 · THE PROBLEM AT SCALE -->
+<section class="slide">
+    <div class="kicker">The problem at scale · top three hotspots</div>
+    <h2>Phone theft is an epidemic in exactly the places iPhones are everywhere</h2>
+    <div class="grid cols-3">
+        <div class="card">
+            <h3>🇬🇧 London</h3>
+            <div class="stat red">117,211</div>
+            <div class="stat-label">phones stolen in 2024, a record. 320 per day, one every 4½ minutes. <b>4 in 5 stolen phones are iPhones.</b> 61k victims were women.</div>
+            <div class="src">Met Police FOI 2025 · House of Commons Library</div>
+        </div>
+        <div class="card">
+            <h3>🇮🇳 India</h3>
+            <div class="stat red">600,000</div>
+            <div class="stat-label">phones stolen per year (50,000 every month). Recovery rate under 15% nationally, just 1.4% in Delhi. Apple's fastest-growing major market.</div>
+            <div class="src">DoT / Sanchar Sathi (CEIR) · Business Standard</div>
+        </div>
+        <div class="card">
+            <h3>🇧🇷 Brazil</h3>
+            <div class="stat red">910,000</div>
+            <div class="stat-label">phones stolen/robbed in 2024. São Paulo city: 19 every hour. Phone <i>rentals</i> grew 158% purely as an anti-theft defense.</div>
+            <div class="src">Anuário Brasileiro de Segurança Pública 2025 · FECAP</div>
+        </div>
+    </div>
+    <p class="lead" style="margin-top:1.6rem;">Also: Paris métro: phone snatching is the city's #1 petty crime, and most targets are iPhone owners.</p>
+    <div class="page">3</div>
+</section>
+
+<!-- 4 · WHAT EXISTS TODAY -->
+<section class="slide">
+    <div class="kicker">Competitive landscape</div>
+    <h2>Everything today assumes you still have <span class="accent">your</span> device</h2>
+    <div class="grid cols-2">
+        <div class="card"><h3>Medical ID / Emergency SOS</h3><p>Brilliant, but it lives on your phone. When the phone is stolen, your emergency contacts go with it.</p></div>
+        <div class="card"><h3>Find My / CEIR / IMEI blocking</h3><p>Tracks and blocks the device. Recovery for <i>later</i>. Under 15% of phones in India are ever recovered. Useless in the moment.</p></div>
+        <div class="card"><h3>Lock-screen contact apps (FINDERR, ICE)</h3><p>Help a <i>finder</i> return your phone. A thief is not a finder.</p></div>
+        <div class="card" style="border-color:#0a84ff;"><h3 class="accent">The gap</h3><p><b>No product lets a victim use a borrowed phone to reach their people, with zero memorization beyond their own number.</b> This is the moment Emergency List owns.</p></div>
+    </div>
+    <div class="page">4</div>
+</section>
+
+<!-- 5 · STEP ZERO: SETUP -->
+<section class="slide">
+    <div class="kicker">Step zero · one-time setup</div>
+    <div style="display:flex; gap:4rem; align-items:center;">
+        <div style="flex:1;">
+            <h2>Your Emergency List:<br>set up once, when you set up your iPhone</h2>
+            <ul class="big check" style="font-size:1.05rem; line-height:1.9;">
+                <li>Part of iPhone onboarding, right alongside Face&nbsp;ID and Apple&nbsp;ID</li>
+                <li>You register <b>exactly three</b> emergency contacts: the people who should get the call</li>
+                <li>Plus your number and a passcode you already remember</li>
+                <li><b>Face Check</b>: a separate rescue face enrollment as your second factor, not your device Face&nbsp;ID</li>
+                <li><b>Optional:</b> share your location (Find&nbsp;My) with any, all, or none of the three. Your choice, per contact</li>
+                <li>Stored in Apple's secure escrow, <b>not</b> on other people's phones</li>
+            </ul>
+            <p class="lead" style="margin-top:1.4rem; font-size:1.05rem;"><b class="accent">Important:</b> a borrowed iPhone only ever surfaces <b>these three names</b>. Never your contact book, never the phone owner's contacts. Three registered people, nothing else.</p>
+        </div>
+        <div class="shots">
+            <div>
+                <img src="screens/setup-empty.png" alt="My Emergency List setup form">
+                <div class="caption">The setup form: your number, your passcode, three contacts. (Prototype)</div>
+            </div>
+            <div>
+                <img src="screens/setup-protected.png" alt="You're protected confirmation">
+                <div class="caption">Saved. "If your phone is ever lost, type your number into this app on any iPhone."</div>
+            </div>
+        </div>
+    </div>
+    <div class="page">5</div>
+</section>
+
+<!-- 6 · THE SOLUTION -->
+<section class="slide">
+    <div class="kicker">The solution</div>
+    <h2>Borrow any iPhone. Type <span class="accent">your own number</span>. Reach your people.</h2>
+    <div class="flow">
+        <div class="step"><b>1 · Borrow</b>Any iPhone, anywhere. The feature ships with iOS. Nothing to install.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>2 · Identify</b>Type the one number you still remember: your own.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>3 · Prove</b>Enter your passcode, verified inside secure escrow. 3 attempts, then lockout + alerts. Then a quick Face Check against your rescue enrollment.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>4 · Confirm</b>Your contact gets a push: "Vasu is reaching you from a borrowed iPhone." They accept.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>5 · Call</b>"Calling Mom…" Only your three registered contacts appear, names only. No contact book, no numbers, in either direction.</div>
+    </div>
+    <p class="lead" style="margin-top:2rem;">The final safeguard is human: even a perfect impostor ends up in a live call with <b>your mother</b>, the one verifier that can't be spoofed.</p>
+    <div class="page">6</div>
+</section>
+
+<!-- 7 · THE RESCUE IN FOUR SCREENS -->
+<section class="slide">
+    <div class="kicker">The rescue, on screen · real prototype</div>
+    <h2>Ninety seconds from stranded to <span class="green">"Hi Mom"</span></h2>
+    <div class="shots row">
+        <div>
+            <img src="screens/flow-numberentry.png" alt="Number entry screen">
+            <div class="caption">1 · Type the one number you remember: your own</div>
+        </div>
+        <div>
+            <img src="screens/flow-passcode.png" alt="Passcode screen">
+            <div class="caption">2 · Your passcode, checked in secure escrow. Never shown to this phone</div>
+        </div>
+        <div>
+            <img src="screens/flow-facecheck.png" alt="Face Check screen">
+            <div class="caption">3 · Face Check against your rescue enrollment</div>
+        </div>
+        <div>
+            <img src="screens/flow-calling.png" alt="Calling Mom with number hidden">
+            <div class="caption">4 · "Calling Mom…" Number hidden, both directions</div>
+        </div>
+    </div>
+    <div class="page">7</div>
+</section>
+
+<!-- 8 · THE CASE LIFECYCLE -->
+<section class="slide">
+    <div class="kicker">The case lifecycle · real prototype</div>
+    <h2>Open · Hold · Close. Then <span class="red">every trace disappears</span></h2>
+    <div class="shots row">
+        <div>
+            <img src="screens/flow-caseactive.png" alt="Case active with three contacts">
+            <div class="caption">Case active: three names, no numbers, no contact book</div>
+        </div>
+        <div>
+            <img src="screens/flow-onhold.png" alt="Case on hold waiting for callback">
+            <div class="caption">On hold: "I'll call you back." Family can ring this borrowed iPhone</div>
+        </div>
+        <div>
+            <img src="screens/flow-callback.png" alt="Incoming callback">
+            <div class="caption">The callback arrives, numbers still hidden from each other</div>
+        </div>
+        <div>
+            <img src="screens/flow-erasing.png" alt="Erase sequence">
+            <div class="caption">Close case: every trace erased, on both sides</div>
+        </div>
+    </div>
+    <div class="page">8</div>
+</section>
+
+<!-- 9 · FIND MY INTEGRATION -->
+<section class="slide">
+    <div class="kicker">Find My integration</div>
+    <h2>Reach your people. Then <span class="accent">find the phone</span></h2>
+    <div class="flow">
+        <div class="step"><b>1 · Opt in at setup</b>Share your location with any, all, or none of your three contacts. Per contact, your choice.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>2 · They see it</b>Your brother already sees your iPhone in Find My, even where you left it, even if it's offline.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>3 · He pushes it to the case</b>One tap: "Share Vasu's phone location to the caller." Only into an active, verified rescue session.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>4 · You allow it</b>The borrowed iPhone asks: Allow or Dismiss. Allow, and the last known location opens as a pin in Maps.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>5 · It disappears</b>Case closed: the shared location is erased with everything else.</div>
+    </div>
+    <p class="lead" style="margin-top:1.8rem;">Most "stolen" phones are just <b>forgotten</b>: the café table, the train seat. This turns "describe the place over the phone" into a pin on a map. And Apple already ships the pattern: iOS&nbsp;18's <b>Share Item Location</b> creates exactly this kind of temporary, expiring location link.</p>
+    <div class="page">9</div>
+</section>
+
+<!-- 7 · PRIVACY BY DESIGN -->
+<section class="slide">
+    <div class="kicker">Privacy by design</div>
+    <h2>Built so a security review says <span class="green">yes</span></h2>
+    <ul class="big check">
+        <li><b>Nothing new to remember</b>: your number + your passcode, both already in your head</li>
+        <li><b>Escrow-verified passcode</b>: the same hardened-HSM pattern Apple ships today in iCloud Keychain recovery, with strict attempt limits</li>
+        <li><b>Face Check second factor</b>: an opt-in rescue enrollment, separate from device Face&nbsp;ID, matched with liveness detection and used only during a help session</li>
+        <li><b>Numbers never displayed</b>: names and relationships only, both directions</li>
+        <li><b>Human-in-the-loop</b>: contacts approve before any call connects</li>
+        <li><b>Location only by double consent</b>: opt-in per contact at setup, pushed only by the trusted contact, accepted on the borrowed iPhone, dead when the case closes</li>
+        <li><b>Ephemeral by architecture</b>: the session exists only in memory on the borrowed iPhone; closing the case destroys everything, on both sides</li>
+        <li><b>No data business, ever</b>: this data is never monetized, analyzed, or shared. Safety is the product.</li>
+    </ul>
+    <div class="page">10</div>
+</section>
+
+<!-- 8 · WHY APPLE, WHY OS-LEVEL -->
+<section class="slide">
+    <div class="kicker">Why Apple · why OS-level</div>
+    <h2>Only Apple can build this, and it's worth building</h2>
+    <div class="grid cols-2">
+        <div class="card"><h3>Must ship with iOS</h3><p>The whole point is that the <i>stranger's</i> phone already has it. No App Store install survives that requirement. This is a platform feature, like Emergency SOS.</p></div>
+        <div class="card"><h3>The infrastructure exists</h3><p>Secure escrow (iCloud Keychain), push verification, Face ID on the owner side for setup, satellite-era emergency UX. This is assembly, not invention.</p></div>
+        <div class="card"><h3>Safety sells iPhones</h3><p>Crash Detection and Satellite SOS are Apple's most powerful ads. "Lost your phone? Any iPhone can reach your family" is the next story in that lineage.</p></div>
+        <div class="card"><h3>A network effect Android can't copy</h3><p>Every iPhone makes every other iPhone owner safer. Feature value scales with iPhone density, strongest exactly where theft is worst (London, Indian metros, São Paulo).</p></div>
+    </div>
+    <p class="lead" style="margin-top:1.6rem;">In hotspot markets, theft anxiety is a <b>point-of-sale objection</b>. This feature converts it into a <b class="green">reason to buy</b>.</p>
+    <div class="page">11</div>
+</section>
+
+<!-- 10 · THE BUSINESS CASE -->
+<section class="slide">
+    <div class="kicker">The business case</div>
+    <h2>Safety is the new reason people <span class="green">choose iPhone</span></h2>
+    <div class="grid cols-2">
+        <div class="card">
+            <h3>A switching driver in exactly the right markets</h3>
+            <p>In London, Indian metros, and São Paulo, theft anxiety is a live factor at the point of sale. <b>"If my phone is stolen, any iPhone around me can reach my family"</b> turns that fear into a reason to buy, and to stay. Feature exclusive to iOS: the more iPhones around you, the safer you are.</p>
+        </div>
+        <div class="card">
+            <h3>Android structurally can't answer</h3>
+            <p>The feature's value depends on <i>density</i>: the stranger's phone must already have it. Apple ships one OS on 100% of its devices, with secure-escrow infrastructure in place. Android is split across dozens of manufacturers and OS versions; no vendor can promise "any nearby phone can help you."</p>
+        </div>
+        <div class="card">
+            <h3>Proven playbook</h3>
+            <p>Crash Detection and Emergency SOS via Satellite became Apple's most effective advertising, with real "this saved my life" stories. iPhone retention already exceeds 90%; safety features deepen it and headline every keynote. This is the next story in that lineage.</p>
+        </div>
+        <div class="card">
+            <h3>Illustrative upside</h3>
+            <p>The three hotspot regions hold hundreds of millions of smartphone buyers. If visible safety tips even <b>just 1%</b> of their annual purchases toward iPhone, that's on the order of <b>a million incremental units, roughly $1 billion a year</b> at current average selling prices, before any halo effect in other markets. <i>(Illustrative estimate.)</i></p>
+        </div>
+    </div>
+    <p class="lead" style="margin-top:1.6rem;"><b class="accent">Framing note:</b> this is sold as consumer protection, not platform advantage: "you're safer on iPhone." The switching and retention follow the safety story on their own.</p>
+    <div class="page">12</div>
+</section>
+
+<!-- 11 · DEMO -->
+<section class="slide">
+    <div class="kicker">Prototype</div>
+    <h2>It's not a slide. It's running code</h2>
+    <p class="lead">Working SwiftUI prototype, deployed and running on iPhone: registration with Face Check enrollment and per-contact location sharing, borrowed-phone flow, passcode attempts + lockout, Face Check verification, contact-side confirmation, hidden-number calling, case on hold with callback, Find My location push with Allow/Dismiss, and the full erase sequence.</p>
+    <div class="shots row">
+        <div>
+            <img src="screens/flow-home.png" alt="Home screen">
+            <div class="caption">Two sides of one feature: get help, or be the phone that helps</div>
+        </div>
+        <div>
+            <img src="screens/flow-confirming.png" alt="Contact confirmation">
+            <div class="caption">"Checking with Dhruv…" The human in the loop</div>
+        </div>
+        <div>
+            <img src="screens/flow-closed.png" alt="Case closed">
+            <div class="caption">Case closed: nothing about you remains, on either side</div>
+        </div>
+    </div>
+    <p class="footer-note">Live demo available, or 90-second screen recording. Demo identity: 555 010 1234 · passcode 1234.</p>
+    <div class="page">13</div>
+</section>
+
+<!-- 10 · ROADMAP + ASK -->
+<section class="slide">
+    <div class="kicker">Roadmap &amp; ask</div>
+    <h2>From prototype to platform feature</h2>
+    <ul class="big">
+        <li><b>Now</b>: SwiftUI prototype demonstrating the full experience end to end</li>
+        <li><b>Next</b>: real escrow-backed verification design; carrier-relay calling so numbers stay hidden in real calls</li>
+        <li><b>Pilot</b>: launch in the #1 hotspot (London) alongside Apple's existing anti-theft push</li>
+        <li><b>Ship</b>: iOS release, marketed in the Crash Detection / Satellite SOS safety lineage</li>
+    </ul>
+    <p class="lead" style="margin-top:2.4rem;"><b>The ask:</b> a conversation. The problem is measured in the hundreds of thousands of victims per year, the moment is unserved, the infrastructure already exists, and only Apple can put it in every pocket.</p>
+    <h2 style="margin-top:2.4rem;">One number. Any iPhone. <span class="accent">Never stranded.</span></h2>
+    <div class="page">14</div>
+</section>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function show(i) {
+        slides[current].classList.remove('active');
+        current = Math.max(0, Math.min(slides.length - 1, i));
+        slides[current].classList.add('active');
+    }
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') show(current + 1);
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp') show(current - 1);
+        if (e.key === 'Home') show(0);
+        if (e.key === 'End') show(slides.length - 1);
+    });
+    document.addEventListener('click', e => { if (!window.getSelection().toString()) show(current + 1); });
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# No build step — this is a single static HTML file.
+[build]
+  publish = "."
+  command = ""
+
+# Allow camera, microphone, and geolocation (required by the app).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Permissions-Policy = "camera=(self), microphone=(self), geolocation=(self)"
