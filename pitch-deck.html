@@ -73,9 +73,9 @@
 <section class="slide active">
     <div class="kicker">Concept pitch · iOS safety feature</div>
     <h1>Emergency List</h1>
-    <h2 style="color:#aeaeb2; font-weight:600;">Your phone is gone.<br>Any iPhone can still reach your people.</h2>
+    <h2 style="color:#aeaeb2; font-weight:600;">Your phone is gone.<br>Any iPhone can reach your people.</h2>
     <p class="lead" style="margin-top:1rem;">The one number everyone still remembers is their own.<br>That should be enough to get help.</p>
-    <div style="margin-top:2.5rem;"><span class="tag">Working SwiftUI prototype</span><span class="tag">Privacy-first design</span><span class="tag">Built on proven Apple infrastructure</span></div>
+    <div style="margin-top:2.5rem;"><span class="tag">Working interactive prototype</span><span class="tag">Privacy-first design</span><span class="tag">Built on proven Apple infrastructure</span></div>
     <div class="page">Vasu Khanna · 2026</div>
 </section>
 
@@ -152,12 +152,12 @@
         </div>
         <div class="shots">
             <div>
-                <img src="screens/setup-empty.png" alt="My Emergency List setup form">
-                <div class="caption">The setup form: your number, your passcode, three contacts. (Prototype)</div>
+                <img src="screens/flow-home.png" alt="Emergency List home screen">
+                <div class="caption">Home screen: "I lost my phone," or "You're protected." (Real prototype)</div>
             </div>
             <div>
-                <img src="screens/setup-protected.png" alt="You're protected confirmation">
-                <div class="caption">Saved. "If your phone is ever lost, type your number into this app on any iPhone."</div>
+                <img src="screens/setup-protected.jpg" alt="You're protected confirmation">
+                <div class="caption">Saved. "If your phone is ever lost, type your number into this app on any iPhone to reach your people."</div>
             </div>
         </div>
     </div>
@@ -189,11 +189,11 @@
     <h2>Ninety seconds from stranded to <span class="green">"Hi Mom"</span></h2>
     <div class="shots row">
         <div>
-            <img src="screens/flow-numberentry.png" alt="Number entry screen">
+            <img src="screens/flow-numberentry.jpg" alt="Number entry screen">
             <div class="caption">1 · Type the one number you remember: your own</div>
         </div>
         <div>
-            <img src="screens/flow-passcode.png" alt="Passcode screen">
+            <img src="screens/flow-passcode.jpg" alt="Passcode screen">
             <div class="caption">2 · Your passcode, checked in secure escrow. Never shown to this phone</div>
         </div>
         <div>
@@ -218,7 +218,7 @@
             <div class="caption">Case active: three names, no numbers, no contact book</div>
         </div>
         <div>
-            <img src="screens/flow-onhold.png" alt="Case on hold waiting for callback">
+            <img src="screens/flow-onhold.jpg" alt="Case on hold waiting for callback">
             <div class="caption">On hold: "I'll call you back." Family can ring this borrowed iPhone</div>
         </div>
         <div>
@@ -252,7 +252,25 @@
     <div class="page">9</div>
 </section>
 
-<!-- 7 · PRIVACY BY DESIGN -->
+<!-- 10 · LIVE TWO-PHONE MODE -->
+<section class="slide">
+    <div class="kicker">Live two-phone mode · working prototype, peer-to-peer</div>
+    <h2>Beyond the demo: a <span class="green">real</span> call between two real iPhones</h2>
+    <p class="lead">The prototype isn't only a scripted walkthrough. It includes a genuine two-phone mode: a live WebRTC voice call plus live GPS sharing between a borrowed iPhone and a family member's iPhone, phone-to-phone, with no company server ever in the middle.</p>
+    <div class="flow">
+        <div class="step"><b>1 · Pick a role</b>"Borrowed iPhone" generates a 4-digit code. "Family member" waits to enter it.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>2 · Pair</b>Type the code. The phones connect directly to each other through a free public relay.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>3 · Call &amp; share</b>Real live audio, plus GPS shared straight into the session from the family phone.</div>
+        <div class="arrow">→</div>
+        <div class="step"><b>4 · Close</b>Either side ends the case. The session is erased on both phones.</div>
+    </div>
+    <p class="lead" style="margin-top:1.8rem;"><b class="accent">No accounts. No setup. No backend.</b> This proves the hardest part of the pitch already works: a rescue call that connects two strangers' devices with nothing but a short code, exactly the trust model the OS-level feature needs.</p>
+    <div class="page">10</div>
+</section>
+
+<!-- 11 · PRIVACY BY DESIGN -->
 <section class="slide">
     <div class="kicker">Privacy by design</div>
     <h2>Built so a security review says <span class="green">yes</span></h2>
@@ -264,12 +282,13 @@
         <li><b>Human-in-the-loop</b>: contacts approve before any call connects</li>
         <li><b>Location only by double consent</b>: opt-in per contact at setup, pushed only by the trusted contact, accepted on the borrowed iPhone, dead when the case closes</li>
         <li><b>Ephemeral by architecture</b>: the session exists only in memory on the borrowed iPhone; closing the case destroys everything, on both sides</li>
+        <li><b>Peer-to-peer where it matters most</b>: the live two-phone mode's voice and location data travel phone-to-phone (WebRTC); no company server ever sees the call content or the GPS fix</li>
         <li><b>No data business, ever</b>: this data is never monetized, analyzed, or shared. Safety is the product.</li>
     </ul>
-    <div class="page">10</div>
+    <div class="page">11</div>
 </section>
 
-<!-- 8 · WHY APPLE, WHY OS-LEVEL -->
+<!-- 12 · WHY APPLE, WHY OS-LEVEL -->
 <section class="slide">
     <div class="kicker">Why Apple · why OS-level</div>
     <h2>Only Apple can build this, and it's worth building</h2>
@@ -280,10 +299,10 @@
         <div class="card"><h3>A network effect Android can't copy</h3><p>Every iPhone makes every other iPhone owner safer. Feature value scales with iPhone density, strongest exactly where theft is worst (London, Indian metros, São Paulo).</p></div>
     </div>
     <p class="lead" style="margin-top:1.6rem;">In hotspot markets, theft anxiety is a <b>point-of-sale objection</b>. This feature converts it into a <b class="green">reason to buy</b>.</p>
-    <div class="page">11</div>
+    <div class="page">12</div>
 </section>
 
-<!-- 10 · THE BUSINESS CASE -->
+<!-- 13 · THE BUSINESS CASE -->
 <section class="slide">
     <div class="kicker">The business case</div>
     <h2>Safety is the new reason people <span class="green">choose iPhone</span></h2>
@@ -306,14 +325,14 @@
         </div>
     </div>
     <p class="lead" style="margin-top:1.6rem;"><b class="accent">Framing note:</b> this is sold as consumer protection, not platform advantage: "you're safer on iPhone." The switching and retention follow the safety story on their own.</p>
-    <div class="page">12</div>
+    <div class="page">13</div>
 </section>
 
-<!-- 11 · DEMO -->
+<!-- 14 · DEMO -->
 <section class="slide">
     <div class="kicker">Prototype</div>
     <h2>It's not a slide. It's running code</h2>
-    <p class="lead">Working SwiftUI prototype, deployed and running on iPhone: registration with Face Check enrollment and per-contact location sharing, borrowed-phone flow, passcode attempts + lockout, Face Check verification, contact-side confirmation, hidden-number calling, case on hold with callback, Find My location push with Allow/Dismiss, and the full erase sequence.</p>
+    <p class="lead">Working interactive prototype, running full-screen on iPhone: registration with Face Check enrollment and per-contact location sharing, borrowed-phone flow, passcode attempts + lockout, Face Check verification, contact-side confirmation, hidden-number calling, case on hold with callback, Find My location push with Allow/Dismiss, the full erase sequence, and a genuine two-phone live mode with real WebRTC calling and GPS sharing.</p>
     <div class="shots row">
         <div>
             <img src="screens/flow-home.png" alt="Home screen">
@@ -328,23 +347,23 @@
             <div class="caption">Case closed: nothing about you remains, on either side</div>
         </div>
     </div>
-    <p class="footer-note">Live demo available, or 90-second screen recording. Demo identity: 555 010 1234 · passcode 1234.</p>
-    <div class="page">13</div>
+    <p class="footer-note">Live demo available, or 90-second screen recording. Demo identity: +1 555 010 1234 · passcode 1234.</p>
+    <div class="page">14</div>
 </section>
 
-<!-- 10 · ROADMAP + ASK -->
+<!-- 15 · ROADMAP + ASK -->
 <section class="slide">
     <div class="kicker">Roadmap &amp; ask</div>
     <h2>From prototype to platform feature</h2>
     <ul class="big">
-        <li><b>Now</b>: SwiftUI prototype demonstrating the full experience end to end</li>
-        <li><b>Next</b>: real escrow-backed verification design; carrier-relay calling so numbers stay hidden in real calls</li>
+        <li><b>Now</b>: interactive prototype demonstrating the full experience end to end, including a working two-phone live-call mode over WebRTC</li>
+        <li><b>Next</b>: native implementation; real escrow-backed verification design; carrier-relay calling so numbers stay hidden in real calls</li>
         <li><b>Pilot</b>: launch in the #1 hotspot (London) alongside Apple's existing anti-theft push</li>
         <li><b>Ship</b>: iOS release, marketed in the Crash Detection / Satellite SOS safety lineage</li>
     </ul>
     <p class="lead" style="margin-top:2.4rem;"><b>The ask:</b> a conversation. The problem is measured in the hundreds of thousands of victims per year, the moment is unserved, the infrastructure already exists, and only Apple can put it in every pocket.</p>
     <h2 style="margin-top:2.4rem;">One number. Any iPhone. <span class="accent">Never stranded.</span></h2>
-    <div class="page">14</div>
+    <div class="page">15</div>
 </section>
 
 <script>
