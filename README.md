@@ -79,13 +79,3 @@ To run: host over HTTPS → open on both phones → **Live two-phone test** → 
 ---
 
 ## Repository layout
-
-```
-index.html      ← the deployable app (self-contained)
-netlify.toml     ← Netlify config (no build, publish root)
-README.md
-```
-
-## License
-
-MIT — see `LICENSE`.
